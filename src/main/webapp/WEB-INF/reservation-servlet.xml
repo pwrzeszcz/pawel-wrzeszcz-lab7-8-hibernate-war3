@@ -61,6 +61,7 @@
     </bean>
 
     <bean id="reservationDAO" class="com.lab.dao.ReservationDaoImpl"></bean>
+    <bean id="roomDAO" class="com.lab.dao.RoomDaoImpl"></bean>
 
     <tx:annotation-driven />
     <bean id="transactionManager"

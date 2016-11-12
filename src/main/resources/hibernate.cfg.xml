@@ -6,5 +6,6 @@
 <hibernate-configuration>
     <session-factory>
         <mapping class="com.lab.entity.ReservationEntity"></mapping>
+        <mapping class="com.lab.entity.RoomEntity"></mapping>
     </session-factory>
 </hibernate-configuration>

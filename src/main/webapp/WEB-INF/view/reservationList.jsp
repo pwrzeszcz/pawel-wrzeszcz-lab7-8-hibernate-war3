@@ -11,15 +11,17 @@
         <table>
         <tr>
             <td><form:label path="name"><spring:message code="label.name"/></form:label></td>
-            <td><form:input path="name" /></td>
+            <td><form:input path="name"/></td>
         </tr>
         <tr>
             <td><form:label path="surname"><spring:message code="label.surname"/></form:label></td>
-            <td><form:input path="surname" /></td>
+            <td><form:input path="surname"/></td>
         </tr>
         <tr>
-            <td><form:label path="roomNumber"><spring:message code="label.roomNumber"/></form:label></td>
-            <td><form:input path="roomNumber" /></td>
+            <td><form:label path="room"><spring:message code="label.room"/></form:label></td>
+            <td>
+                <form:select path="room" items="${roomList}" itemLabel="number" itemValue="id" />
+            </td>
         </tr>
         <tr>
             <td colspan="2">
@@ -28,22 +30,27 @@
         </tr>
     </table>
     </form:form>
-    <h3>Employees</h3>
-    <c:if  test="${!empty reservationList}">
-    <table class="data">
-    <tr>
-        <th>Name and surname</th>
-        <th>Room Number</th>
-        <th>Action</th>
-    </tr>
-    <c:forEach items="${reservationList}" var="reservation">
-        <tr>
-            <td>${reservation.name}, ${reservation.surname} </td>
-            <td>${reservation.roomNumber}</td>
-            <td>delete</td>
-        </tr>
-    </c:forEach>
-    </table>
-    </c:if>
+    <c:choose>
+        <c:when test="${!empty reservationList}">
+            <h3>Reservations</h3>
+            <table class="data">
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>&nbsp;</th>
+            </tr>
+            <c:forEach items="${reservationList}" var="reservation">
+                <tr>
+                    <td>${reservation.name}</td>
+                    <td>${reservation.surname}</td>
+                    <td><a href="delete/${reservation.id}">delete</a></td>
+                </tr>
+            </c:forEach>
+            </table>
+        </c:when>
+        <c:otherwise>
+            <h3>There are no reservations</h3>
+        </c:otherwise>
+    </c:choose>
     </body>
 </html>

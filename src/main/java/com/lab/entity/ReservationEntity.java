@@ -1,10 +1,7 @@
 package com.lab.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="reservation")
@@ -14,12 +11,16 @@ public class ReservationEntity
     @Column(name="id")
     @GeneratedValue
     private Integer id;
+
     @Column(name="name")
     private String name;
+
     @Column(name="surname")
     private String surname;
-    @Column(name="room_number")
-    private Integer roomNumber;
+
+    @ManyToOne
+    @JoinColumn(name="room_id")
+    private RoomEntity room;
 
     public Integer getId() {
         return id;
@@ -45,11 +46,11 @@ public class ReservationEntity
         this.surname = surname;
     }
 
-    public Integer getRoomNumber() {
-        return roomNumber;
+    public RoomEntity getRoom() {
+        return room;
     }
 
-    public void setRoomNumber(Integer roomNumber) {
-        this.roomNumber = roomNumber;
+    public void setRoom(RoomEntity room) {
+        this.room = room;
     }
 }
