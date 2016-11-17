@@ -11,11 +11,11 @@
         <table>
         <tr>
             <td><form:label path="name"><spring:message code="label.name"/></form:label></td>
-            <td><form:input path="name"/></td>
+            <td><form:input path="name" required="required" /></td>
         </tr>
         <tr>
             <td><form:label path="surname"><spring:message code="label.surname"/></form:label></td>
-            <td><form:input path="surname"/></td>
+            <td><form:input path="surname" required="required" /></td>
         </tr>
         <tr>
             <td><form:label path="room"><spring:message code="label.room"/></form:label></td>
